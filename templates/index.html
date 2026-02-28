@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Image Recognition System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">SIRS</span>
+      </div>
+      <p class="header-subtitle">Smart Image Recognition System · MobileNetV2 · ImageNet</p>
+      <div class="header-badge">LIVE</div>
+    </div>
+  </header>
+
+  <!-- ── Main ────────────────────────────────────────────────────────── -->
+  <main class="main-grid">
+
+    <!-- LEFT: Upload Panel -->
+    <section class="panel upload-panel" id="uploadPanel">
+      <div class="panel-label">01 / UPLOAD</div>
+
+      <!-- Drag & Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <div class="drop-icon">⬆</div>
+        <p class="drop-title">Drop image here</p>
+        <p class="drop-sub">or click to browse</p>
+        <p class="drop-formats">PNG · JPG · WEBP · BMP — max 10 MB</p>
+        <input type="file" id="fileInput" accept="image/*" hidden />
+      </div>
+
+      <!-- Preview Area (hidden until file selected) -->
+      <div class="preview-wrap" id="previewWrap" style="display:none;">
+        <img id="previewImg" src="" alt="Preview" class="preview-img" />
+        <div class="preview-meta" id="previewMeta"></div>
+        <button class="btn-clear" id="btnClear">✕ Clear</button>
+      </div>
+
+      <!-- Analyse Button -->
+      <button class="btn-analyse" id="btnAnalyse" disabled>
+        <span class="btn-text">ANALYSE IMAGE</span>
+        <span class="btn-arrow">→</span>
+      </button>
+
+      <!-- Error message -->
+      <div class="error-box" id="errorBox" style="display:none;"></div>
+    </section>
+
+    <!-- RIGHT: Results Panel -->
+    <section class="panel results-panel" id="resultsPanel">
+      <div class="panel-label">02 / RESULTS</div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">◈</div>
+        <p>Upload an image on the left<br/>to see classification results</p>
+      </div>
+
+      <!-- Spinner -->
+      <div class="spinner-wrap" id="spinnerWrap" style="display:none;">
+        <div class="spinner"></div>
+        <p class="spinner-label">Running inference…</p>
+      </div>
+
+      <!-- Results Content -->
+      <div class="results-content" id="resultsContent" style="display:none;">
+        <div class="top-result" id="topResult"></div>
+        <div class="predictions-list" id="predictionsList"></div>
+        <div class="model-info">
+          <span>Model: MobileNetV2</span>
+          <span>Dataset: ImageNet (1000 classes)</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <p>Smart Image Recognition System &nbsp;·&nbsp; Built with TensorFlow, OpenCV &amp; Flask</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
